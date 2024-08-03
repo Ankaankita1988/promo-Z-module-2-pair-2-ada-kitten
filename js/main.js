@@ -20,3 +20,50 @@ const kittenOne = `<li class="card">
 </article>
 </li>`;
 list.innerHTML=kittenOne;
+/*
+const kittenOne1 = `<li class="card">
+   <article>
+<img
+  class="card_img"
+  src="https://dev.adalab.es/sphynx-gato.webp"
+  alt="gato"
+/>
+<h3 class="card_title">Fiona</h3>
+<h4 class="card_race">Sphynx</h4>
+<p class="card_description">
+  Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
+  hasta con pinta de alienígena han llegado a definir a esta raza
+  gatuna que se caracteriza por la «ausencia» de pelo.
+</p>
+</article>
+</li>`;
+list.innerHTML=kittenOne1;
+
+const kittenOne2 = `<li class="card">
+ <article>
+            <img
+              class="card_img"
+              src="https://dev.adalab.es/maine-coon-cat.webp"
+              alt="cat"
+            />
+            <h3 class="card_title">Cielo</h3>
+            <h4 class="card_race">Maine Coon</h4>
+            <p class="card_description">
+              Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
+              bella mirada se ha convertido en una de sus señas de identidad.
+              Sus ojos son grandes y las orejas resultan largas y en punta.
+            </p>
+            </article>
+          </li>`;
+ list.innerHTML=kittenOne2; */
+
+`
+
+
+
+
+
+
+
+  
+
