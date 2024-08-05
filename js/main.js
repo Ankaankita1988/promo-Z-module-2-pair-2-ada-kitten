@@ -48,3 +48,18 @@ const kittenThree= `<li class="card">
             </p>
           </li>`;
 list.innerHTML= kittenOne + kittenTwo + kittenThree;
+
+const formAdd = document.querySelector('.js-new-form');
+formAdd.classList.remove('collapsed');
+const btnAdd = document.querySelector ('.js-btn-add');
+btnAdd.addEventListener ('click', (event)=> {
+  // console.log ('holi');
+  formAdd.classList.toggle("collapsed");
+})
+
+const cancelBtn = document.querySelector ('.js-cancel');
+cancelBtn.addEventListener ('click', (event) =>{
+  // console.log ('hola esto es cancelar');
+  event.preventDefault();
+  formAdd.classList.add ('collapsed');
+})
