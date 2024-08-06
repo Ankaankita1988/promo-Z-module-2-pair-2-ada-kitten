@@ -63,3 +63,24 @@ cancelBtn.addEventListener ('click', (event) =>{
   event.preventDefault();
   formAdd.classList.add ('collapsed');
 })
+
+const searchButton = document.querySelector ('.js_button-search');
+const input_search_desc = document.querySelector ('.js_in_search_desc');
+searchButton.addEventListener ('click', (event) => {
+  event.preventDefault();
+  const descrSearchText = input_search_desc.value;
+  // console.log (descrSearchText);
+  list.innerHTML = '';
+
+  if (kittenOne.includes(descrSearchText)) {
+    list.innerHTML = kittenOne;
+  }
+  
+  if (kittenTwo.includes(descrSearchText)) {
+    list.innerHTML += kittenTwo;
+  }
+  
+  if (kittenThree.includes(descrSearchText)) {
+    list.innerHTML += kittenThree;
+  }
+})
