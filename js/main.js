@@ -1,5 +1,4 @@
 "use strict";
-
 const list=document.querySelector('.js-list');
 /* Agregar el código del li desde HTMl 
 Repetir este proceso por cada gatito */
