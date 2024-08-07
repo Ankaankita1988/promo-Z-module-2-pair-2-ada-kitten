@@ -1,5 +1,4 @@
 "use strict";
-
 const list=document.querySelector('.js-list');
 /* Agregar el código del li desde HTMl 
 Repetir este proceso por cada gatito */
@@ -8,7 +7,7 @@ const kittenOne = `<li class="card">
   <img
     class="card_img"
     src="https://dev.adalab.es/gato-siames.webp"
-    alt="gatito"
+    alt="siames-cat"
   />
   <h3 class="card_title">Anastacio</h3>
   <h4 class="card_race">Siamés</h4>
@@ -19,38 +18,68 @@ const kittenOne = `<li class="card">
    </p>
 </article>
 </li>`;
-list.innerHTML=kittenOne;
-
-const kittenOne1 = `<li class="card">
-   <article>
-<img
-  class="card_img"
-  src="https://dev.adalab.es/sphynx-gato.webp"
-  alt="gato"
-/>
-<h3 class="card_title">Fiona</h3>
-<h4 class="card_race">Sphynx</h4>
-<p class="card_description">
-  Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
-  hasta con pinta de alienígena han llegado a definir a esta raza
-  gatuna que se caracteriza por la «ausencia» de pelo.
-</p>
-</article>
-</li>`;
-list.innerHTML=kittenOne1;
-
-const kittenOne2 = `<li class="card">
-    <img
-        class="card_img"
-        src="https://dev.adalab.es/maine-coon-cat.webp"
-        alt="cat"
-        />
-        <h3 class="card_title">Cielo</h3>
-        <h4 class="card_race">Maine Coon</h4>
-         <p class="card_description">
+const kittenTwo = `<li class="card">
+            <img
+              class="card_img"
+              src="https://dev.adalab.es/sphynx-gato.webp"
+              alt="sphynx-cat"
+            />
+            <h3 class="card_title">Fiona</h3>
+            <h4 class="card_race">Sphynx</h4>
+            <p class="card_description">
+              Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
+              hasta con pinta de alienígena han llegado a definir a esta raza
+              gatuna que se caracteriza por la «ausencia» de pelo.
+            </p>
+          </li>`;
+const kittenThree= `<li class="card">
+            <img
+              class="card_img"
+              src="https://dev.adalab.es/maine-coon-cat.webp"
+              alt="maine-coon-cat"
+            />
+            <h3 class="card_title">Cielo</h3>
+            <h4 class="card_race">Maine Coon</h4>
+            <p class="card_description">
               Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
               bella mirada se ha convertido en una de sus señas de identidad.
               Sus ojos son grandes y las orejas resultan largas y en punta.
             </p>
-            </li>`;
- list.innerHTML=kittenOne2;
+          </li>`;
+list.innerHTML= kittenOne + kittenTwo + kittenThree;
+
+const formAdd = document.querySelector('.js-new-form');
+formAdd.classList.remove('collapsed');
+const btnAdd = document.querySelector ('.js-btn-add');
+btnAdd.addEventListener ('click', (event)=> {
+  // console.log ('holi');
+  formAdd.classList.toggle("collapsed");
+})
+
+const cancelBtn = document.querySelector ('.js-cancel');
+cancelBtn.addEventListener ('click', (event) =>{
+  // console.log ('hola esto es cancelar');
+  event.preventDefault();
+  formAdd.classList.add ('collapsed');
+})
+
+const searchButton = document.querySelector ('.js_button-search');
+const input_search_desc = document.querySelector ('.js_in_search_desc');
+searchButton.addEventListener ('click', (event) => {
+  event.preventDefault();
+  const descrSearchText = input_search_desc.value;
+  // console.log (descrSearchText);
+  list.innerHTML = '';
+
+  if (kittenOne.includes(descrSearchText)) {
+    list.innerHTML = kittenOne;
+  }
+  
+  if (kittenTwo.includes(descrSearchText)) {
+    list.innerHTML += kittenTwo;
+  }
+  
+  if (kittenThree.includes(descrSearchText)) {
+    list.innerHTML += kittenThree;
+  }
+})
