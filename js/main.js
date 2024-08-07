@@ -19,7 +19,7 @@ const kittenOne = `<li class="card">
    </p>
 </article>
 </li>`;
-list.innerHTML=kittenOne;
+
 
 const kittenOne1 = `<li class="card">
    <article>
@@ -37,7 +37,6 @@ const kittenOne1 = `<li class="card">
 </p>
 </article>
 </li>`;
-list.innerHTML=kittenOne1;
 
 const kittenOne2 = `<li class="card">
     <img
@@ -53,4 +52,4 @@ const kittenOne2 = `<li class="card">
               Sus ojos son grandes y las orejas resultan largas y en punta.
             </p>
             </li>`;
- list.innerHTML=kittenOne2;
+ list.innerHTML=kittenOne+kittenOne1+kittenOne2;
