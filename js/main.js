@@ -1,14 +1,21 @@
 "use strict";
+const formAdd = document.querySelector('.js-new-form');
+const cancelBtn = document.querySelector ('.js-cancel');
+const btnAdd = document.querySelector ('.js-btn-add');
+const btnCatAdd = document.querySelector ('.js_btnCat');
+const searchButton = document.querySelector ('.js_button-search');
+const input_search_desc = document.querySelector ('.js_in_search_desc');
+
 const kitten1Image="https://dev.adalab.es/gato-siames.webp";
-const kitten1Name="Anastacio";
+const kitten1Name="Anastacio".toUpperCase();
 const kitten1Race="Siamés";
 const kitten1Desc="Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.";
 const kitten2Image="https://dev.adalab.es/sphynx-gato.webp";
-const kitten2Name="Fiona";
+const kitten2Name="Fiona".toUpperCase();
 const kitten2Race="Sphynx";
 const kitten2Desc="Produce fascinación y curiosidad. Exótico, raro, bello, extraño... hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de devicePixelRatio";
 const kitten3Image="https://dev.adalab.es/maine-coon-cat.webp";
-const kitten3Name="Cielo";
+const kitten3Name="Cielo".toUpperCase();
 const kitten3Race="Maine Coon";
 const kitten3Desc=" Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.";
 const list=document.querySelector('.js-list');
@@ -49,23 +56,30 @@ const kittenThree= `<li class="card">
              </li>`;
 list.innerHTML= kittenOne + kittenTwo + kittenThree;
 
-const formAdd = document.querySelector('.js-new-form');
-formAdd.classList.remove('collapsed');
-const btnAdd = document.querySelector ('.js-btn-add');
-btnAdd.addEventListener ('click', (event)=> {
-  // console.log ('holi');
-  formAdd.classList.toggle("collapsed");
+function showNewCatForm() {
+  formAdd.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  formAdd.classList.add('collapsed');
+}
+
+btnAdd.addEventListener ('click', (event) => {
+  if (formAdd.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+ console.log (formAdd.classList.contains('collapsed'));
+  // formAdd.classList.toggle("collapsed");
 })
 
-const cancelBtn = document.querySelector ('.js-cancel');
 cancelBtn.addEventListener ('click', (event) =>{
   // console.log ('hola esto es cancelar');
   event.preventDefault();
   formAdd.classList.add ('collapsed');
 })
 
-const searchButton = document.querySelector ('.js_button-search');
-const input_search_desc = document.querySelector ('.js_in_search_desc');
+
 searchButton.addEventListener ('click', (event) => {
   event.preventDefault();
   const descrSearchText = input_search_desc.value;
