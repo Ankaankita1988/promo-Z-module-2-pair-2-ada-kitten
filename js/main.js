@@ -5,6 +5,10 @@ const btnAdd = document.querySelector ('.js-btn-add');
 const btnCatAdd = document.querySelector ('.js_btnCat');
 const searchButton = document.querySelector ('.js_button-search');
 const input_search_desc = document.querySelector ('.js_in_search_desc');
+const photoInput = document.querySelector('.js-photo');
+const nameInput = document.querySelector('.js-name');
+const raceInput = document.querySelector('.js-race');
+const dscInput = document.querySelector('.js-description');
 
 const kitten1Image="https://dev.adalab.es/gato-siames.webp";
 const kitten1Name="Anastacio".toUpperCase();
@@ -98,3 +102,12 @@ searchButton.addEventListener ('click', (event) => {
     list.innerHTML += kittenThree;
   }
 })
+
+function addNewKitten (event){
+  event.preventDefault();
+  const photoValue = photoInput.value;
+  const nameValue = nameInput.value;
+  const raceValue = raceInput.value;
+  const dscValue = dscInput.value;
+}
+btnCatAdd.addEventListener('click', addNewKitten);
