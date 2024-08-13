@@ -9,19 +9,23 @@ const photoInput =document.querySelector('.js-photo');
 const nameInput =document.querySelector('.js-name');
 const raceInput =document.querySelector('.js-race');
 const dscInput =document.querySelector('.js-description');
+const list=document.querySelector('.js-list');
 
+//OBJETO GATO 1 CON SU CLAVE:VALOR
 const kittenData_1 = {
   image: 'https://dev.adalab.es/gato-siames.webp',
   name: 'Anastacio'.toUpperCase(),
   desc: ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.',
   race: 'Siamés',
 };
+//OBJETO GATO 2 CON SU CLAVE:VALOR
 const kittenData_2 = {
   image: 'https://dev.adalab.es/sphynx-gato.webp',
   name: 'Fiona'.toUpperCase(),
   desc: "Produce fascinación y curiosidad. Exótico, raro, bello, extraño... hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de devicePixelRatio",
   race:"Sphynx"
 };
+//OBJETO GATO 3 CON SU CLAVE:VALOR
 const kittenData_3 = {
   image: "https://dev.adalab.es/maine-coon-cat.webp",
   name: 'Cielo'.toUpperCase(),
@@ -29,43 +33,25 @@ const kittenData_3 = {
   race:"Maine Coon"
 };
 
-const list=document.querySelector('.js-list');
-/* Agregar el código del li desde HTMl 
-Repetir este para cada gatito*/
-const kittenOne = `<li class="card">
-<article>
-  <img
-    class="card_img"
-    src="${kittenData_1.image}"
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${kittenData_1.name}</h3>
-  <h4 class="card_race">${kittenData_1.race}</h4>
-  <p class="card_description">${kittenData_1.desc}</p>
-</article>
-</li>`;
-const kittenTwo = `<li class="card">
-            <img
-              class="card_img"
-              src="${kittenData_2.image}"
-              alt="sphynx-cat"
-            />
-            <h3 class="card_title">${kittenData_2.name}</h3>
-            <h4 class="card_race">${kittenData_2.race}</h4>
-            <p class="card_description">${kittenData_2.desc} </p>
-           </li>`;
-const kittenThree= `<li class="card">
-            <img
-              class="card_img"
-              src="${kittenData_3.image}"
-              alt="maine-coon-cat"
-            />
-            <h3 class="card_title">${kittenData_3.name}</h3>
-            <h4 class="card_race">${kittenData_3.race}</h4>
-            <p class="card_description">${kittenData_3.desc} 
-             </p>                   
-             </li>`;
-list.innerHTML= kittenOne + kittenTwo + kittenThree;
+//METEMOS LOS TRES GATOS DENTRO DE UNA FUNCIÓN ARRAY [OBJ1, OBJ2, OBJ3]
+const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+
+//kittenData es un objeto con toda la información del gato
+function renderKitten(kittenData){
+  return `
+  <li class="card">
+      <img
+        class="card_img"
+        src="${kittenData.image}"
+        alt="sphynx-cat"
+      />
+      <h3 class="card_title">${kittenData.name}</h3>
+      <h4 class="card_race">${kittenData.race}</h4>
+      <p class="card_description">${kittenData.desc} </p>
+  </li>`;
+}
+//AQUÍ PONEMOS 
+list.innerHTML= renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);
 
 function showNewCatForm() {
   formAdd.classList.remove('collapsed');
@@ -80,32 +66,26 @@ btnAdd.addEventListener ('click', (event) => {
   } else {
     hideNewCatForm();
   }
- console.log (formAdd.classList.contains('collapsed'));
-  // formAdd.classList.toggle("collapsed");
 })
 
 cancelBtn.addEventListener ('click', (event) =>{
-  // console.log ('hola esto es cancelar');
   event.preventDefault();
   formAdd.classList.add ('collapsed');
 })
-
 const filterKitten = (event) => {
   event.preventDefault();
   const descrSearchText = input_search_desc.value;
-  console.log (descrSearchText);
   list.innerHTML = '';
-    if (kittenOne.includes(descrSearchText)) {
-    list.innerHTML += kittenOne;
+  if (kittenDataList[0].desc.includes(descrSearchText)) {
+  list.innerHTML += renderKitten(kittenDataList[0]);
   }
-  if (kittenTwo.includes(descrSearchText)) {
-    list.innerHTML += kittenTwo;
+  if (kittenDataList[1].desc.includes(descrSearchText)) {
+    list.innerHTML += renderKitten(kittenDataList[1]);
   }
-  if (kittenThree.includes(descrSearchText)) {
-    list.innerHTML += kittenThree;
+  if (kittenDataList[2].desc.includes(descrSearchText)) {
+    list.innerHTML += renderKitten(kittenDataList[2]);
   }
 };
-
 
 searchButton.addEventListener("click", filterKitten);
 
@@ -115,23 +95,13 @@ function addNewKitten (event) {
   const nameValue =nameInput.value;
   const raceValue =raceInput.value;
   const dscValue =dscInput.value;
-  console.log(photoValue);
-  console.log(nameValue);
-  console.log(raceValue);
-  console.log(dscValue);
-   if(addNewKitten){
-      const newCat=`<li class="card">
-            <img
-              class="card_img"
-              src="${photoValue}"
-              alt="sphynx-cat"
-            />
-            <h3 class="card_title">${nameValue}</h3>
-            <h4 class="card_race">${raceValue}</h4>
-            <p class="card_description">${dscValue} </p>
-           </li>`;
-       list.innerHTML+=newCat;
+  const kittenData = {
+    image:photoInput.value,
+    name:nameInput.value,
+    desc:dscInput.value,
+    race:raceInput.value
+  };
+  list.innerHTML += renderKitten(kittenData);
    }
-}
 btnCatAdd.addEventListener ('click', addNewKitten);
 
