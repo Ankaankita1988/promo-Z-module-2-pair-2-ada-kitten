@@ -36,6 +36,7 @@ const kittenData_3 = {
 //METEMOS LOS TRES GATOS DENTRO DE UNA FUNCIÓN ARRAY [OBJ1, OBJ2, OBJ3]
 const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
+
 //kittenData es un objeto con toda la información del gato
 function renderKitten(kittenData){
   return `
@@ -50,8 +51,13 @@ function renderKitten(kittenData){
       <p class="card_description">${kittenData.desc} </p>
   </li>`;
 }
-//AQUÍ PONEMOS 
-list.innerHTML= renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);
+function renderKittenList(renderKittenList){
+  for (const kitten of kittenDataList){
+    list.innerHTML+=renderKitten (kitten);
+  }
+  
+}
+renderKittenList(kittenDataList);
 
 function showNewCatForm() {
   formAdd.classList.remove('collapsed');
@@ -76,7 +82,13 @@ const filterKitten = (event) => {
   event.preventDefault();
   const descrSearchText = input_search_desc.value;
   list.innerHTML = '';
-  if (kittenDataList[0].desc.includes(descrSearchText)) {
+  for(const kittenItem of kittenDataList){
+    if(kittenItem.desc.includes (descrSearchText)){
+      list.innerHTML+=renderKitten (kittenItem);
+    }
+      
+  }
+  /*if (kittenDataList[0].desc.includes(descrSearchText)) {
   list.innerHTML += renderKitten(kittenDataList[0]);
   }
   if (kittenDataList[1].desc.includes(descrSearchText)) {
@@ -84,7 +96,7 @@ const filterKitten = (event) => {
   }
   if (kittenDataList[2].desc.includes(descrSearchText)) {
     list.innerHTML += renderKitten(kittenDataList[2]);
-  }
+  }*/
 };
 
 searchButton.addEventListener("click", filterKitten);
